@@ -1,56 +1,64 @@
-#include "parser.hpp"
-#include "html.hpp"
+#include "parser.h"
 
-void parser(std::string filename) {
-  std::ifstream fin;
-
-  // open the file
-  fin.open(filename);
+bool open_file(std::ifstream& fin, const std::string filepath) {
+  fin.open(filepath);
   if (!fin.is_open()) {
-    std::cerr << "There is no file: " << filename;
-    exit(getchar());
+    std::cerr << "File " << filepath << " was not found!\n";
+    return (false);
   }
+  return (true);
+}
 
-  // here start the lambda wich acquire the info from tag head.
-  auto get_head_info = [&fin]() {
-    Head res;
-    bool head_open = false;
-    std::string property[] = {"og:url", "og:site_name",
+head get_head_info(std::ifstream& fin, std::string& line) {
+  head result;
+  int start_content;
+  std::string properties[] = {"og:url", "og:site_name",
                               "article:published_time", "og:title",
                               "og:description"};
-    size_t content_start;
-    int i = 0;
+  int i = 0;
 
-    while (!fin.eof()) {
-      std::string line;
-      std::getline(fin, line);
-      if (line.find("</head>") != std::string::npos)
-        break;
-      if (head_open) {
-        if ((content_start = line.find("content=")) != std::string::npos)
-          res.meta.insert({property[i++],
-                           line.substr(content_start + 9,
-                                       line.size() - 2 - content_start - 10)});
-      }
-      if (line.find("<head>") != std::string::npos) head_open = true;
-    }
-    return (res);
-  };
+  while (line.find("</head>") == std::string::npos) {
+    std::getline(fin, line);
+    if ((start_content = line.find("content=")) != std::string::npos)
+      result.meta[properties[i++]] = line.substr(
+          size_t(start_content) + 9, line.size() - 12 - start_content);
+  }
+  return (result);
+}
 
-  auto get_body_info = [&fin]() {
-    Body res;
-    while (!fin.eof()) {
-      std::string line;
-      std::getline(fin, line);
-	  if (line.find("<article>") != std::string::npos)
-	  {
-		  int start_h1;
-		  while (line.find("</article>") == std::string::npos)
-		  {
-			  getline(fin, line);
-			  if ((start_h1 = line.find("<h1>")))
-		  }
-	  }
+body get_body_info(std::ifstream& fin, std::string& line) {
+  body result;
+  int h1_start;
+  int p_start;
+  while (line.find("</body>") == std::string::npos) {
+    std::getline(fin, line);
+    if ((h1_start = line.find("<h1>")) != std::string::npos) {
+      if (line.find("</h1>") != std::string::npos)
+        result.title.append(
+            line.substr(size_t(h1_start) + 4, line.size() - 10 - h1_start));
     }
-  };
+    if ((p_start = line.find("<p>")) != std::string::npos) {
+      if (line.find("</p>") != std::string::npos)
+        result.passage.append(
+            line.substr(size_t(p_start) + 3, line.size() - p_start - 7)
+                .append(" "));
+    }
+  }
+  return (result);
+}
+
+html parse_html_file(const std::string filepath) {
+  std::ifstream fin;
+  std::string line;
+  html result;
+
+  if (!open_file(fin, filepath)) exit(getchar());
+  while (!fin.eof()) {
+    std::getline(fin, line);
+    if (line.find("<head>") != std::string::npos)
+      result.set_head(get_head_info(fin, line));
+    if (line.find("<body>") != std::string::npos)
+      result.set_body(get_body_info(fin, line));
+  }
+  return (result);
 }
