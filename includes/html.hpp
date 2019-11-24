@@ -1,49 +1,36 @@
 #pragma once
-
 #include <iostream>
 #include <string>
 #include <unordered_map>
-#include "parser.hpp"
 
-void parser(std::string filename);
-
-// the structure which shows the representation of the head-tag
-struct Head {
-  std::unordered_map<std::string, std::string>
-      meta;  // <property-value, content-value>
-  friend std::ostream& operator<<(std::ostream& out, const Head& head) {
-    for (auto m_property : head.meta) {
-      out << '[' << m_property.first << ", " << m_property.second << ']'
-          << std::endl;
-    }
-    return (out);
-  }
+struct head {
+  // The meta tag. If be more esspecialy meta contain
+  // <priority-value, content-value>.
+  // Also, the unordered_map has one advantage
+  // The complexity of the find of the certain ellemet is O(1) or O(n).
+  std::unordered_map<std::string, std::string> meta;
+  friend std::ostream& operator<<(std::ostream& out, const head& head_tag);
 };
 
-struct Body {
+struct body {
+  // It will contain the title of the passage
+  // In our case <h1>There is the title</h1>
   std::string title;
+  // It will contain the main body of the paassage
   std::string passage;
 };
 
-class HTML {
+// The class html contains specific data from our html
+class html {
  private:
-  Head head_tag;
-  Body body_tag;
+  head head_tag;
+  body body_tag;
 
  public:
-  HTML(){};
-
- /* HTML(std::string filename)
-  {
-          *this = parser(filename);
-  };*/
-
-  void set_head_tag(const Head head) { head_tag = head; }
-
-  Head get_head_tag() const { return (head_tag); }
-
-  void set_body_tag(const Body body) { body_tag = body; }
-  Body get_body_tag() const { return (body_tag); }
+  html(){};
+  html(std::string filepath);
+  head get_head_tag() const;
+  body get_body_tag() const;
+  void set_head(head head_tag);
+  void set_body(body body_tag);
 };
-
-
