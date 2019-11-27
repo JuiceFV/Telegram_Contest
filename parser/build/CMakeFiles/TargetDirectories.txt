@@ -1,3 +1,0 @@
-D:/Projects/Telegram_Contest/parser/build/CMakeFiles/Telegram_Parser.dir
-D:/Projects/Telegram_Contest/parser/build/CMakeFiles/ALL_BUILD.dir
-D:/Projects/Telegram_Contest/parser/build/CMakeFiles/ZERO_CHECK.dir

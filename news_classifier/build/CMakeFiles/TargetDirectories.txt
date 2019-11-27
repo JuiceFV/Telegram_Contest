@@ -1,0 +1,3 @@
+D:/Projects/Telegram_Contest/news_classifier/build/CMakeFiles/Telegram_Classifier.dir
+D:/Projects/Telegram_Contest/news_classifier/build/CMakeFiles/ALL_BUILD.dir
+D:/Projects/Telegram_Contest/news_classifier/build/CMakeFiles/ZERO_CHECK.dir
