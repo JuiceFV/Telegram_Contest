@@ -8,16 +8,16 @@ struct head {
   // <priority-value, content-value>.
   // Also, the unordered_map has one advantage
   // The complexity of the find of the certain ellemet is O(1) or O(n).
-  std::unordered_map<std::string, std::string> meta;
-  friend std::ostream& operator<<(std::ostream& out, const head& head_tag);
+  std::unordered_map<std::wstring, std::wstring> meta;
+  friend std::wostream& operator<<(std::wostream& out, const head& head_tag);
 };
 
 struct body {
   // It will contain the title of the passage
   // In our case <h1>There is the title</h1>
-  std::string title;
+  std::wstring title;
   // It will contain the main body of the paassage
-  std::string passage;
+  std::wstring passage;
 };
 
 // The class html contains specific data from our html

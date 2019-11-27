@@ -4,6 +4,6 @@
 
 #include "html.hpp"
 
-bool open_file(std::ifstream &fin, const std::string filepath);
+bool open_file(std::wifstream &fin, const std::string filepath);
 
 html parse_html_file(const std::string filepath);

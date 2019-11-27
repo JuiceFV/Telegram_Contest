@@ -1,10 +1,10 @@
 #include "html.hpp"
 
 #include "parser.h"
-std::ostream& operator<<(std::ostream& out, const head& head_tag) {
+std::wostream& operator<<(std::wostream& out, const head& head_tag) {
   if (!head_tag.meta.empty()) {
     for (auto m_property : head_tag.meta) {
-      out << "[ " << m_property.first << " , " << m_property.second << " ]"
+      out << L"[ " << m_property.first << L" , " << m_property.second << " ]"
           << std::endl;
     }
   } else
