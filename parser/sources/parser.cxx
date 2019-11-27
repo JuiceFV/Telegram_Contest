@@ -26,15 +26,14 @@ head get_head_info(std::ifstream& fin, std::string& line) {
   return (result);
 }
 
-static std::string remove_html_tags(std::string str) {
+void remove_html_tags(std::string& str) {
   size_t start_html_tag;
   size_t end_html_tag;
   while ((start_html_tag = str.find("<")) != std::string::npos) {
     end_html_tag = str.find(">") + 1;
     if (end_html_tag != std::string::npos)
-      str.erase(start_html_tag, end_html_tag - start_html_tag);
+      str.replace(start_html_tag, end_html_tag - start_html_tag, " ");
   }
-  return (str);
 }
 body get_body_info(std::ifstream& fin, std::string& line) {
   body result;
@@ -43,12 +42,21 @@ body get_body_info(std::ifstream& fin, std::string& line) {
   while (line.find("</body>") == std::string::npos) {
     std::getline(fin, line);
     if ((h1_start = line.find("<h1>")) != std::string::npos) {
-      if (line.find("</h1>") != std::string::npos)
-        result.title.append(remove_html_tags(line));
+      if (line.find("</h1>") != std::string::npos) {
+        result.title.append(
+            line.substr(size_t(h1_start) + 4, line.size() - 10 - h1_start));
+        remove_html_tags(result.title);
+      }
     }
     if ((p_start = line.find("<p>")) != std::string::npos) {
       if (line.find("</p>") != std::string::npos)
-        result.passage.append(remove_html_tags(line).append(" "));
+	  { 
+        result.passage.append(
+            line.substr(size_t(p_start) + 3, line.size() - p_start - 7)
+                .append(" "));
+		remove_html_tags(result.passage);
+	  }
+	  
     }
   }
   return (result);
@@ -67,5 +75,6 @@ html parse_html_file(const std::string filepath) {
     if (line.find("<body>") != std::string::npos)
       result.set_body(get_body_info(fin, line));
   }
+  fin.close();
   return (result);
 }
