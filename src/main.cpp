@@ -193,32 +193,33 @@ language detect_lang(language langs[], int langs_num, std::string s)
 
 int main() {
     //generate_prob(dict, "eng_news-typical_2016_100K-sentences.txt");
-    language eng ("lang/eng.txt", "eng");
-    language rus ("lang/rus.txt", "rus");
-	language ger ("lang/ger.txt", "ger");
-	language czc ("lang/czc.txt", "czc");
-	language dns ("lang/dns.txt", "dns");
-	language dut ("lang/dut.txt", "dut");
-	language frn ("lang/frn.txt", "frn");
-	language grk ("lang/grk.txt", "grk");
-	language hng ("lang/hng.txt", "hng");
-	language itn ("lang/itn.txt", "itn");
-	language jpn ("lang/jpn.txt", "jpn");
-	language lat ("lang/lat.txt", "lat");
-	language lit ("lang/lit.txt", "lit");
-	language ltn ("lang/ltn.txt", "ltn");
-	language lux ("lang/lux.txt", "lux");
-	language mls ("lang/mls.txt", "mls");
-	language por ("lang/por.txt", "por");
-	language rmn1 ("lang/rmn1.txt", "rmn1");
-	language rum ("lang/rum.txt", "rum");
-	language spn ("lang/spn.txt", "spn");
-	language ukr ("lang/ukr.txt", "ukr");
-	language yps ("lang/yps.txt", "yps");
+    string lang_folder_path = "../";
+    language eng (lang_folder_path + "lang/eng.txt", "eng");
+    language rus (lang_folder_path + "lang/rus.txt", "rus");
+	language ger (lang_folder_path + "lang/ger.txt", "ger");
+	language czc (lang_folder_path + "lang/czc.txt", "czc");
+	language dns (lang_folder_path + "lang/dns.txt", "dns");
+	language dut (lang_folder_path + "lang/dut.txt", "dut");
+	language frn (lang_folder_path + "lang/frn.txt", "frn");
+	language grk (lang_folder_path + "lang/grk.txt", "grk");
+	language hng (lang_folder_path + "lang/hng.txt", "hng");
+	language itn (lang_folder_path + "lang/itn.txt", "itn");
+	language jpn (lang_folder_path + "lang/jpn.txt", "jpn");
+	language lat (lang_folder_path + "lang/lat.txt", "lat");
+	language lit (lang_folder_path + "lang/lit.txt", "lit");
+	language ltn (lang_folder_path + "lang/ltn.txt", "ltn");
+	language lux (lang_folder_path + "lang/lux.txt", "lux");
+	language mls (lang_folder_path + "lang/mls.txt", "mls");
+	language por (lang_folder_path + "lang/por.txt", "por");
+	language rmn1 (lang_folder_path + "lang/rmn1.txt", "rmn1");
+	language rum (lang_folder_path + "lang/rum.txt", "rum");
+	language spn (lang_folder_path + "lang/spn.txt", "spn");
+	language ukr (lang_folder_path + "lang/ukr.txt", "ukr");
+	language yps (lang_folder_path + "lang/yps.txt", "yps");
 
 	int langs_num = 22;
 	language langs[22] = {eng, rus, ger, czc, dns, dut, frn, grk, hng, itn, jpn, lat, lit, ltn, lux, mls, por, rmn1, rum, spn, ukr, yps};
-	string folder = "dictionaries/";
+	string folder = "../dictionaries/";
 
 	//for (int i = 0; i < langs_num; i++)
 		//langs[i].generate_probability();

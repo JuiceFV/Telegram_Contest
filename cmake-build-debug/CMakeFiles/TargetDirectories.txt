@@ -1,3 +1,0 @@
-/home/nequus/Documents/Programing/TelegramContest/Ngram/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/nequus/Documents/Programing/TelegramContest/Ngram/cmake-build-debug/CMakeFiles/Ngram.dir
-/home/nequus/Documents/Programing/TelegramContest/Ngram/cmake-build-debug/CMakeFiles/edit_cache.dir
