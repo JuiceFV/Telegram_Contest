@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../includes/main.h
+map
+-
+fstream
+-
+string
+-
+set
+-
+vector
+-
+algorithm
+-
+iostream
+-
+unordered_map
+-
+cmath
+-
+
+/home/nequus/Documents/Programing/TelegramContest/Ngram/src/main.cpp
+main.h
+/home/nequus/Documents/Programing/TelegramContest/Ngram/src/main.h
+
+/home/nequus/Documents/Programing/TelegramContest/Ngram/src/print_map.cpp
+main.h
+/home/nequus/Documents/Programing/TelegramContest/Ngram/src/main.h
+

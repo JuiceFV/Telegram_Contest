@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Ngram.dir/src/main.cpp.o CMakeFiles/Ngram.dir/src/print_map.cpp.o  -o Ngram 
