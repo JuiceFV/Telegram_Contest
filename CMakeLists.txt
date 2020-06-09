@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.9)
 
 project(Telegram_Context)
 
@@ -12,7 +12,8 @@ include(cmake/safeguard.cmake)
 include(cmake/setflags.cmake)
 
 set(SL_SOURCES "./solution/sources/")
-set(PS_SOURCES "./parser/")
+set(PS_SOURCES "./solution/parser/")
+set(TST_SOURCES "./solution/tests")
 set(${PROJECT_NAME}_MAIN "main.cpp")
 
 add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_MAIN})
