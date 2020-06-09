@@ -12,10 +12,7 @@ addons:
       - gcc-6
       - g++-6
       - cmake
-
-before_script:
-    - mkdir build
-    - cd build
+    
 
 script:
     # Link gcc-6 and g++-6 to their standard commands
@@ -27,4 +24,6 @@ script:
     # Check versions of gcc, g++ and cmake
     - gcc -v && g++ -v && cmake --version
     # Run your build commands next
+    - mkdir build
+    - cd build
     - cmake ..
