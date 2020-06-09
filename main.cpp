@@ -1,6 +1,6 @@
 #include <iostream>
 
-int main()
+int main(int argc, char *argv[])
 {
-	std::cout << "QQ\n";
+    std::cout << "QQ\n";
 }
