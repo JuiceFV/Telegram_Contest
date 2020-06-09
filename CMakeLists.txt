@@ -1,22 +1,18 @@
-# CMake min version, you can change it for the your own version
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.17)
 
-# The project name
-project(Telegram_Contest)
+project(Telegram_Context)
 
-# detect operating system
-message(STATUS "We are on a ${CMAKE_SYSTEM_NAME} system")
-
-# set project version
 set(${PROJECT_NAME}_MAJOR_VERSION 0)
 set(${PROJECT_NAME}_MINOR_VERSION 1)
 set(${PROJECT_NAME}_VERSION "${${PROJECT_NAME}_MAJOR_VERSION}.${${PROJECT_NAME}_MINOR_VERSION}")
 
 message("${PROJECT_NAME} version: ${${PROJECT_NAME}_VERSION}")
 
+include(cmake/safeguard.cmake)
+include(cmake/setflags.cmake)
 
+set(SL_SOURCES "./solution/sources/")
+set(PS_SOURCES "./parser/")
+set(${PROJECT_NAME}_MAIN "main.cpp")
 
-# Set sources variables
-set(${PROJECT_NAME}_main "main.cpp")
-
-add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_main})
+add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_MAIN})
