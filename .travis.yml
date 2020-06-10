@@ -7,10 +7,9 @@ compiler:
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+      - george-edison55-precise-backports
     packages:
-      - gcc-6
-      - g++-6
+      - cmake-data
       - cmake
     
 
