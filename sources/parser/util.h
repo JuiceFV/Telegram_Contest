@@ -1,0 +1,6 @@
+#include<functional>
+
+
+namespace std {
+
+}
